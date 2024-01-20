@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>complex form</h2>
+    <form action="">
+        <!-- personal information -->
+      <fieldset>
+        <legend>Personal Information</legend>
+        <label for="fname">First Name:</label>
+        <input type="text" id="fname" name="fname" />
+        <br />
+        <br />
+        <label for="lname">Last Name:</label>
+        <input type="text" id="lname" name="lname" />
+        <br />
+        <br />
+        <label for="emailID">Email ID:</label>
+        <input type="email" id="emailID" name="emailID" />
+        <br />
+        <br />
+        <label for="telp">Phone No:</label>
+        <input type="tel" id="telp" name="telp" />
+        <br />
+        <br />
+        <label for="birthdate">Date Of Birth:</label>
+        <input type="date" name="birthdate" id="birthdate" />
+        <br />
+        <br />
+        <!-- <span>Gender:</span>   -->
+        <!-- or -->
+        <p style="display: inline">Gender:</p>
+
+        <input type="radio" name="radio" id="radio3" />
+        <label for="radio3">Male</label>
+        <input type="radio" name="radio" id="radio4" />
+        <label for="radio4">Female</label>
+        <br />
+        <br />
+        <label for="country">country:</label>
+        <select name="country" id="country">
+          <option value="INDIA">INDIA</option>
+          <option value="USA">USA</option>
+          <option value="RUSSIA">RUSSIA</option>
+          <option value="JAPAN">JAPAN</option>
+        </select>
+      </fieldset>
+<!-- for adaress -->
+      <fieldset>
+        <legend>Address</legend>
+        <label for="street">State:</label>
+        <input type="text" name="State" id="State">
+        <br>
+        <br>
+        <label for="City">City:</label>
+        <input type="text" name="City" id="City">
+        <br>
+        <br>
+        <label for="street">Street:</label>
+        <input type="text" name="Street" id="street">
+        <br>
+        <br>
+        <label for="PIN_CODE">Pin Code:</label>
+        <input type="text" name="PIN_CODE" id="PIN_CODE">
+        <br>
+        <br>
+        
+      </fieldset>
+<!-- other Information -->
+      <fieldset>
+        <legend>Other Information</legend>
+        <br>
+        <label for="Textarea1">Write About your self:</label>
+        <br>
+        <textarea name="Textarea1" id="Textarea1" cols="30" rows="10" placeholder="Write About your self more 50 words.." required ></textarea>
+        <br>
+        <label for="terms">I agree to the terms</label>
+        <input type="checkbox" name="terms" id="terms" required>
+      </fieldset>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        .container{
+
+            display: flex;
+            /* justify-content: center; */
+            border: 2px solid red;
+            background:aquamarine;
+            /* height: 100vh; */
+            flex-direction: row;
+            width: 500px;
+            margin: 10px;
+        padding: 2px;
+            /* align-items: center; */
+        }
+        img{
+            height: 200px;
+            width: 200px;
+        }
+      #left{
+        background-color: rgb(17, 130, 191);
+        border: 2px solid rebeccapurple;
+        width: 47%;
+        margin: 3px;
+        padding: 2px;
+        display: flex;
+        flex-direction: column;
+
+      }
+      #right{
+        background-color: rgb(30, 166, 91);
+        border: 2px solid darkgray;
+        width: 47%;
+        margin: 3px;
+        padding: 2px;
+
+
+
+      }
+      p{
+        border: 2px solid blue;
+      }
+
+       @media screen and (max-width:640px)  {
+        .container{
+            flex-direction: column;
+        }
+       }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="left">
+            <p>prathmesh</p>
+            <p id="box2">Bidve</p>
+        </div>
+        <div id="right"><img src="../day17Postion/img3.jpg" alt=""></div>
+    </div>
+</body>
+</html>

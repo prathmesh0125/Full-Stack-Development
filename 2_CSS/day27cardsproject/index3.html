@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>card 3 Home-Work</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        width: 100%;
+        height: 100vh;
+        background-color: #8bc6ec;
+        background-image: linear-gradient(135deg, #b63434 0%, #051286 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .card {
+        width: 70%;
+        height: 70%;
+        border: 2px solid black;
+        display: flex;
+        box-shadow: 1px 1px 15px 4px rgb(141, 135, 135);
+      }
+      .card .left {
+        width: 50%;
+        height: 100%;
+        background-color: purple;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+      }
+      .card .right {
+        width: 50%;
+        height: 100%;
+        border: 2px solid black;
+        display: flex;
+      }
+      .right img {
+        width: 100%;
+        height: 100%;
+      }
+      .left {
+      }
+      .top {
+        margin-top: -10%;
+        margin-bottom: 8%;
+      }
+      .top p {
+        font-size: 60px;
+      }
+      .medule {
+      }
+      .medule p {
+        margin: 15px;
+        font-size: 20px;
+      }
+      .details {
+        margin: 30px 50px;
+        width: 90%;
+        height: 50px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      @media screen and (min-width: 750px) and (max-width: 1200px) {
+        .top p {
+          font-size: 30px;
+        }
+        .medule p {
+          margin: 5px;
+          font-size: 14px;
+        }
+      }
+      @media screen and (min-width: 300px) and (max-width: 750px) {
+        .top p {
+          font-size: 25px;
+        }
+        .medule p {
+          margin: 15px;
+          font-size: 10px;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="left">
+          <div class="top">
+            <p>Get insights that help</p>
+            <p>Your Business Grow</p>
+          </div>
+          <div class="medule">
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est eius
+              cumque provident totam, ullam nam pariatur quo deserunt atque
+              tenetur architecto, voluptate aliquid tenetur architecto,
+              voluptate aliquid tenetur architecto, voluptate aliquid Lorem
+              ipsum dolor sit amet consectetur adipisicing elit. Quam vero ut
+              perspiciatis eligendi optio dignissimos cum maxime ipsam
+              veritatis, ad voluptates, ipsa porro assumenda possimus. Amet
+              facilis consectetur at natus!
+            </p>
+          </div>
+          <div class="details">
+            <div>
+              <h2>10K+</h2>
+              <p>Cooments</p>
+            </div>
+            <div>
+              <h2>214</h2>
+              <p>Paid Users</p>
+            </div>
+            <div>
+              <h2>12M+</h2>
+              <p>views</p>
+            </div>
+          </div>
+        </div>
+        <div class="right">
+          <img src="../img5.jpg" alt="" />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

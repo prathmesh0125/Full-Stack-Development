@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .box {
+        position: relative;
+        width: 60px;
+        height: 60px;
+        border: 1px solid red;
+        margin: 20px;
+        color: white;
+        display: contents;
+        padding: 100px;
+        align-items: center;
+        justify-content: center;
+        font-size: 25px;
+        border-radius: 25px;
+        background: #18191f;
+        box-shadow: -1px -1px 4px rgba(255, 255, 255, 0.5),
+          4px 4px 6px rgba(0, 0, 0, 0.2),
+          inset -1px -1px 4px rgba(255, 255, 255, 0.05),
+          inset 4px 4px 4px rgba(0, 0, 0, 0.4);
+      }
+      span {
+        border: 1px solid red;
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        padding: 15px;
+        /* display: block; */
+        /* display: inline-block; it works inline but we add custom width/hight*/
+        display: inline-block;
+      }
+      * {
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+      }
+      body {
+        width: 80%;
+        height: 100vh;
+        /* display: grid; */
+        margin-left: 10%;
+        margin-right: 10%;
+        background: #18191f;
+        align-items: center;
+        justify-content: center;
+      }
+      .Programing {
+        margin-top: -8%;
+        display: inline-block;
+        /* grid-template-areas:
+   'div div div'
+   '#s1 #s2 #s3'; */
+      }
+      h1 {
+        text-align: center;
+        position: relative;
+        margin: 10px;
+        color: white;
+        padding: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 25px;
+        border-radius: 25px;
+
+        box-shadow: -1px -1px 4px rgba(255, 255, 255, 0.5),
+          4px 4px 6px rgba(0, 0, 0, 0.2),
+          inset -1px -1px 4px rgba(255, 255, 255, 0.05),
+          inset 4px 4px 4px rgba(0, 0, 0, 0.4);
+      }
+
+      .btn {
+        position: relative;
+        width: 60px;
+        height: 60px;
+        margin: 53px;
+        color: white;
+        padding: 49px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 25px;
+        border-radius: 25px;
+
+        box-shadow: -1px -1px 4px rgba(255, 255, 255, 0.5),
+          4px 4px 6px rgba(0, 0, 0, 0.2),
+          inset -1px -1px 4px rgba(255, 255, 255, 0.05),
+          inset 4px 4px 4px rgba(0, 0, 0, 0.4);
+      }
+
+      .btn::before {
+        content: "";
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.05);
+        filter: blur(5px);
+        border-radius: 10px;
+        opacity: 0.1;
+      }
+      .p1 {
+        width: 340px;
+      }
+
+      .development {
+        margin-top: -8%;
+
+        display: flex;
+      }
+
+      /* java class */
+
+      .btn {
+  color: #00f3ff;
+  box-shadow: 0px 0px 15px #00f3ff, 0px 0px 25px #00f3ff;
+  text-shadow: 0px 0px 15px #00f3ff, 0px 0px 25px #00f3ff;
+  animation: glow 2s linear infinite;
+}
+      @keyframes glow {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  50%{
+    filter: hue-rotate(180deg);
+
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+      /* .dev {
+  box-shadow: 0px 0px 15px #00f3ff, 0px 0px 25px #00f3ff;
+  text-shadow: 0px 0px 15px #00f3ff, 0px 0px 25px #00f3ff;
+  color: #00f3ff;
+  animation: glow 1s linear infinite;
+} */
+      .pro {
+  color: #00f3ff;
+  box-shadow: 0px 0px 15px red;
+  animation: glow 2s linear infinite;
+}
+      @media screen and (max-width:410px) 
+{
+
+.btn{
+    position: relative;
+    width: 40px;
+    height: 63px;
+    margin: 15px;
+    margin-top: 44px;
+    padding: 35px;
+    font-size: 18px;
+   
+  }
+}
+    </style>
+  </head>
+  <body>
+    <!-- block element always comes in new line -->
+    <!-- <span>Welcome to codehelp</span>
+    <span>Welcome to codehelp 2</span> -->
+
+    <h1 class="pro">Skill</h1>
+    <div class="box">
+      <span id="s2" class="btn">c++</span>
+      <span id="s3" class="btn">Java</span>
+      <span id="s4" class="btn">Python</span>
+      <span id="s5" class="btn">HTML</span>
+      <span id="s6" class="btn">CSS</span>
+      <span id="s7" class="btn">JS</span>
+      <span id="s8" class="btn">React JS</span>
+      <span id="s9" class="btn">Node JS</span>
+      <span id="s10" class="btn">Mongodb</span>
+      <span id="s11" class="btn">Bootstrap</span>
+      <span id="s12" class="btn">Express Js</span>
+
+      <!-- <span id="s1" class="btn">C</span>
+        <span id="s2" class="btn">c++</span>
+        <span id="s3" class="btn">Java</span>
+        <span id="s4" class="btn">Python</span>
+        <span id="s5" class="btn">HTML</span>
+        <span id="s6" class="btn">CSS</span>
+        <span id="s7" class="btn">JS</span>
+        <span id="s8" class="btn">React JS</span>
+        <span id="s9" class="btn">Node JS</span>
+        <span id="s10" class="btn">Mongodb</span>
+        <span id="s11" class="btn">Bootstrap</span>
+        <span id="s12" class="btn">Express Js</span> -->
+    </div>
+  </body>
+</html>

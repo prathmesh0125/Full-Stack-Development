@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Query</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+         .con {
+        background-color: beige;
+        border: 5px solid black;
+        margin: 2px;
+        padding: 2px;
+        display: flex;
+        flex-wrap: wrap;
+
+        
+      }
+      .box {
+        height: 100px;
+        width: 100px;
+        border: 1px solid red;
+        margin: 15px;
+        padding: 5px;
+        padding: 30px;
+
+      }
+      #box1 {
+        background-color: aqua;
+      }
+      #box2 {
+        background-color: blue;
+        /* for chaning oreder we use oredering */
+        /* order:4; */
+      }
+      #box3 {
+        background-color: orange;
+        font-size: 17px;
+      }
+      #box4 {
+        background-color: brown;
+      }
+
+      @media screen and (max-width:640px ) {
+        .con{
+            flex-direction: row;
+        flex-wrap: wrap;
+            
+        }
+      }
+      @media screen and (min-width:650px) and (max-width:1280px ) {
+        .con{
+            flex-direction: column;
+        flex-wrap: wrap;
+        }
+      }
+    </style>
+</head>
+<body>
+    <div class="con">
+        <div class="box" id="box1">Box1</div>
+        <div class="box" id="box2">Box2</div>
+        <div class="box" id="box3">Box3</div>
+        <div class="box" id="box4">Box4</div>
+    </div>
+</body>
+</html>
+
+
+<!-- extra matarial -->
+
+<!-- display: flex; -->
+        <!-- flex-wrap: wrap;
+        flex-direction: row;
+        /* height: 100vh; */
+        justify-content: start;
+        align-items: start;
+        align-content: start;
+        /* overflow: hidden; */
+        /* flex-wrap: wrap; */
+        /* one hand syntax for flexdirection and flex-wrap:-flex-flows */
+        /* flex-flow:row wrap; */
+        /* forchaning direction */
+        /* flex-direction: row-reverse; */
+        /* flex-direction: column-reverse; */ -->

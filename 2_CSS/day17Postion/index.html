@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ostion Property</title>
+  </head>
+  <style>
+    div {
+      border: 1px solid red;
+    }
+    img {
+      width: 15rem;
+      height: 15rem;
+      margin: 10px;
+      
+    }
+    .img2 {
+
+        /* relative:-currspont to cureent window */
+      /* position: relative;
+        top: 100px;
+        left: 200px; */
+        /* absolute:- relative to its closest poeitioned ancestor */
+      position: absolute;
+      top: 100px;
+      right: 422px;
+      bottom: 100px;
+      left: 131px;
+    }
+    .img3{
+        position: sticky;
+        top: 10px;/* it is important to set top property in stickey*/
+    }
+
+    .img4{
+        position: fixed;
+    }
+    .container {
+      position: relative;
+      height: 2000px;
+      background-color:aquamarine;
+    }
+    .box{
+        background:gray;
+        height: 5000px;
+    }
+
+  </style>
+  <body>
+    <!-- by default property is static -->
+    <div class="container">
+      <img class="img1" src="img1.jpg" alt="loading" / > <img class="img2"
+      src="img2.jpg" alt="loading" / > <img class="img3" src="img3.jpg"
+      alt="loading" / > <img class="img4" src="img4.jpg" alt="loading" / >
+      <!-- <img  class="img5" src="img5.jpg" alt="loading" / > -->
+      <!-- <img  class="img6" src="img6.jpg" alt="loading" / > -->
+    </div>
+    <!-- <img src="img5.jpg" alt="loading" / > -->
+    <!-- <img src="img6.jpg" alt="loading" / > -->
+    <div class="box">
+
+    </div>
+  </body>
+</html>

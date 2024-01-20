@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jobapplication</title>
+  </head>
+  <style>
+    body{
+      background-color: rgb(199, 222, 222);
+    }
+
+#TT{
+    text-align: center;
+    /* background-color: black; */
+    
+}
+form{
+    overflow: hidden;
+    background:rgb(229, 228, 226);
+    
+    
+}
+fieldset,legend{
+        overflow: hidden;
+    background: rgb(229, 228, 226);
+
+    }
+  </style>
+  <body>
+    <fieldset >
+    <legend id="TT"><h2>Application Form</h2></legend>
+    <fieldset>
+
+       <legend><h3>Job Application</h3></legend> 
+        <form action="">
+            <label for="fname">First Name:</label>
+      <input type="text" id="fname" name="fname" />
+      <br />
+      <br />
+      <label for="lname">Last Name:</label>
+      <input type="text" id="lname" name="lname" />
+      <br />
+      <br />
+      <label for="emailID">Email ID:</label>
+      <input type="email" id="emailID" name="emailID" />
+      <br />
+      <br />
+      <label for="telp">Phone No:</label>
+      <input type="tel" id="telp" name="telp" />
+      <br />
+      <br />
+      <p style="display: inline;">Gender:</p>
+            
+            <input type="radio" name="radio" id="radio3" />
+            <label for="radio3">Male</label>
+            <input type="radio" name="radio" id="radio4" />
+            <label for="radio4">Female</label>
+            <br>
+    
+      <br />
+      <br />
+      <label for="counter">Experiance(in year):</label>
+      <input type="number" name="counter" id="counter" min="0" max="50" />
+      <br />
+      <br />
+      <fieldset>
+        <legend>Skills</legend>
+        <input type="checkbox" name="checkbox" id="checkbox1" />
+        <label for="checkbox1">HTML</label>
+        <input type="checkbox" name="checkbox" id="checkbox2" />
+        <label for="checkbox2">CSS</label>
+        <input type="checkbox" name="checkbox" id="checkbox3" />
+        <label for="checkbox3">JavaScript</label>
+        <input type="checkbox" name="checkbox" id="checkbox4" />
+        <label for="checkbox4">React Js</label>
+        <input type="checkbox" name="checkbox" id="checkbox5" />
+        <label for="checkbox5">Node JS</label>
+        <input type="checkbox" name="checkbox" id="checkbox6" />
+        <label for="checkbox6">Angular</label>
+        <input type="checkbox" name="checkbox" id="checkbox7" />
+        <label for="checkbox7">MongoDb</label>
+    </fieldset>
+      <br />
+      <label for="education">Qulification:</label>
+      <select name="education" id="education">
+          <option value="Phd">Phd</option>
+        <option value="MBA">MBA</option>
+        <option value="M-Tech">M-Tech</option>
+        <option value="B-Tech">B-Tech</option>
+        <option value="Diploma">Diploma</option>
+    </select>
+      <br />
+      <br />
+      <fieldset>
+          <legend>Availability:</legend>
+        <label for="radio1">Full-Time</label>
+        <input type="radio" name="Availability" id="radio1" />
+        <br />
+        <label for="radio2">Part-Time</label>
+        <input type="radio" name="Availability" id="radio2" />
+      </fieldset>
+      <br>
+      <label for="file">Upload Resume:</label>
+      <input
+      type="file"
+        name="file"
+        id="file
+    "
+      />
+      <br>
+      <br>
+      <label for="Textarea1">Write About your self:</label>
+      <br>
+      <textarea name="Textarea1" id="Textarea1" cols="30" rows="10" placeholder="Write About your self more 50 words.." required ></textarea>
+      <br>
+    </fieldset>
+      <br>
+      <fieldset>
+        <legend><h3>Personal Information</h3></legend>
+        <label for="fname">Full Name:</label>
+        <input type="text" id="fname" name="fname" />
+        <br />
+        
+        <br />
+        <label for="emailID">Email ID:</label>
+        <input type="email" id="emailID" name="emailID" />
+        <br />
+        <br />
+        <label for="telp">Phone No:</label>
+        <input type="tel" id="telp" name="telp" />
+        <br />
+        <br />
+        <label for="birthdate">Date Of Birth:</label>
+        <input type="date" name="birthdate" id="birthdate" />
+        <br />
+        <br />
+        <!-- <span>Gender:</span>   -->
+        <!-- or -->
+        <p style="display: inline">Gender:</p>
+
+        <input type="radio" name="Gender" id="radio3" />
+        <label for="radio3">Male</label>
+        <input type="radio" name="Gender" id="radio4" />
+        <label for="radio4">Female</label>
+        <br />
+        <br />
+        <label for="country">country:</label>
+        <select name="country" id="country">
+          <option value="INDIA">INDIA</option>
+          <option value="USA">USA</option>
+          <option value="RUSSIA">RUSSIA</option>
+          <option value="JAPAN">JAPAN</option>
+        </select>
+      </fieldset>
+      <br>
+<!-- for adaress -->
+      <fieldset>
+        <legend><h3>Address</h3></legend>
+        <label for="street">State:</label>
+        <input type="text" name="State" id="State">
+        <br>
+        <br>
+        <label for="City">City:</label>
+        <input type="text" name="City" id="City">
+        <br>
+        <br>
+        <label for="street">Street:</label>
+        <input type="text" name="Street" id="street">
+        <br>
+        <br>
+        <label for="PIN_CODE">Pin Code:</label>
+        <input type="text" name="PIN_CODE" id="PIN_CODE">
+        <br>
+        <br>
+        
+      </fieldset>
+      <br>
+      <input type="submit" value="Submit Application">
+      <input type="reset" value="Reset">
+
+        
+      </fieldset>
+    </form>
+  </body>
+</html>

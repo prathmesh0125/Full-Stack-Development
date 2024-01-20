@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>card2</title>
+    <style>
+      * {
+        margin: 0%;
+        padding: 0%;
+        box-sizing: border-box;
+      }
+      .container {
+        width: 100%;
+        height: 100vh;
+        min-height: 800px;
+        background-color: #8bc6ec;
+        background-image: linear-gradient(228deg, #b4a2a2 0%, #580b59f7 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .card {
+        width: 362px;
+        height: 600px;
+        border: 1px solid gray;
+        background-color: white;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 2px 2px 7px 8px rgba(147, 165, 192, 0.863);
+      }
+      .card img {
+        width: 359px;
+        border-top-right-radius: 15px;
+        border-top-left-radius: 15px;
+        /* border-radius: 20px; */
+      }
+      .card h2 {
+        margin: 10%;
+      }
+      .card p {
+        margin: 0px 50px;
+        text-align: center;
+      }
+      .plate {
+        width: 70%;
+        height: 50px;
+        /* border: 1px solid red; */
+        margin: 20px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: aquamarine;
+      }
+      .plate img {
+        width: 40px;
+        height: 40px;
+      }
+      .plan p {
+        margin-left: -4px;
+      }
+      .button {
+        width: 70%;
+        height: 50px;
+        background-color: rgb(5, 5, 59);
+        color: white;
+        text-align: center;
+        line-height: 45px;
+        font-size: 18px;
+        border-radius: 10px;
+        box-shadow: 1px 2px 8px 2px rgb(71, 56, 56);
+      }
+      .can{
+        text-align: center;
+        
+      }
+      .can p{
+        margin: 10px;
+        font-size: 20px;
+      }
+      a{
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <img src="../bg.jpg" alt="" srcset="" />
+        <h2>Order Summery</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem earum
+          similique ea tempora temporibus, doloribus hic commodi voluptate
+        </p>
+        <div class="plate">
+          <div>
+            <img src="../Favicon.png" alt="" srcset="" />
+          </div>
+          <div class="plan">
+            <p>anniual plan</p>
+            <p>$199/Year</p>
+          </div>
+          <div>
+            <a href="#"> change</a>
+          </div>
+        </div>
+        <div class="button">procced to order</div>
+        <div class="can">
+          <p>Cancle order</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

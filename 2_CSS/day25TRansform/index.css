@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+body {
+  height: 100vh;
+  width: 100vw;
+  border: 2px solid green;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: burlywood;
+}
+.box {
+  width: 400px;
+  height: 400px;
+  background-color: rgb(122, 160, 19);
+  border: 2px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  transition: all 0.5s linear  0.5s;
+}
+.box:hover{
+    transform: rotate(-360deg);
+    /* transform: scale(0.5); */
+    background-color: rgb(255, 0, 0);
+    /* transform: skew(-10deg);
+    transform: translate(200px,200px);
+    transform: scaleY(1.5);
+    transform: scalex(0.5);
+   */
+}
+p{
+    font-size: 36px;
+
+}
