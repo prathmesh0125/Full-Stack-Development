@@ -32,23 +32,59 @@ app.get("/", function (req, res) {
 });
 // add new kidney
 app.post("/", function (req, res) {
-  const ishealty = req.body.ishealty;
+  const ishealty = req.body.isheatly;
   users[0].kidneys.push({
     healthy: ishealty,
   });
-  res.json({
+  res.send({
     msg: "done",
   });
 });
 // replace the kidney
 app.put("/", function (req, res) {
-  for (let i = 0; i < users[0].kidneys.length; i++) {
-    users[0].kidneys[i].healthy = true;
+  if (istheratleastoneunhealthykidney()) {
+    for (let i = 0; i < users[0].kidneys.length; i++) {
+      users[0].kidneys[i].healthy = true;
+    }
+    res.json({
+      msg: "replacement is done",
+    });
+  } else {
+    res.status(411).json({
+      msg: "no need of replacement",
+    });
   }
-  res.json({
-    msg: "replacement is done",
-  });
 });
+// remove unhealthy kidney
+app.delete("/", function (req, res) {
+  if (istheratleastoneunhealthykidney()) {
+    const newarray = [];
+    for (let i = 0; i < users[0].kidneys.length; i++) {
+      if (users[0].kidneys[i].healthy) {
+        newarray.push({ healthy: true });
+      }
+    }
+    users[0].kidneys = newarray;
+    res.send({
+      msg: "removed unhealthy kidney",
+    });
+  } else {
+    res.status(411).json({
+      msg: "you dont't any bad kidney",
+    });
+  }
+});
+
+function istheratleastoneunhealthykidney() {
+  let atleastoneunhealthykidney = false;
+  for (let i = 0; i < users[0].kidneys.length; i++) {
+    if (!users[0].kidneys[i].healthy) {
+      atleastoneunhealthykidney = true;
+    }
+  }
+  return atleastoneunhealthykidney;
+}
+
 app.listen(3001, function (req, res) {
   console.log("server is running on 3001 port");
 });
