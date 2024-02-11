@@ -8,9 +8,12 @@
 //   })
 // }
 
+const { json } = require("body-parser");
+
 // async await syntax
 async function getdata() {
   const response = await fetch("https://fakerapi.it/api/v1/persons");//by default it send a get req
-  const data=await response.json();
-  console.log(data);
+  const finaldata=await response.json();
+  console.log(finaldata);
+  document.getElementById("container").innerHTML=JSON.stringify(finaldata.data);
 }
