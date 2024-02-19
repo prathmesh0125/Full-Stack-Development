@@ -15,44 +15,45 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        
       }
-      button{
-        width: 87px;
-        font-size: 11px;
-
+      button {
+        font-size: 12px;
+        padding: 5px;
+        background-color: rgb(162, 0, 255);
+      }
+      .container {
+        width: 50%;
+        height: 30%;
+        padding: 1rem;
+        text-align: center;
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <input
-        oninput="calculateSum()"
-        id="first"
-        type="text"
-        placeholder="first number"
-      />
+      <input id="first" type="text" placeholder="first number" />
       <br />
       <br />
-      <input
-        oninput="calculateSum()"
-        id="second"
-        type="text"
-        placeholder="second number"
-      />
+      <input id="second" type="text" placeholder="second number" />
       <br />
       <br />
       <button onclick="calculateSum()">Calculate Sum</button>
       <button onclick="clearFields()">Clear Fields</button>
+      <br />
+      <br />
       <div id="sum"></div>
     </div>
   </body>
   <script>
-    function calculateSum() {
+    async function calculateSum() {
       let a = document.getElementById("first").value;
       let b = document.getElementById("second").value;
-      let ans = parseInt(a) + parseInt(b);
-      document.getElementById("sum").innerHTML = "Sum is " + ans;
+      const element = document.getElementById("sum");
+      const res = await fetch(
+        `https://sum-server.100xdevs.com/sum?a=${a}&b=${b}`
+      );
+      const ans = await res.text();
+      element.innerHTML = `sum is ${ans}`;
     }
 
     function clearFields() {
