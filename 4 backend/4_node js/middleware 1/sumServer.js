@@ -9,6 +9,18 @@ app.get("/sum", (req,res) => {
     msg: `sum = ${ans}`,
   });
 });
+// intrest 
+app.get("/intrest",(req,res)=>{
+  const principle=parseInt(req.body.principle);
+  const intrest=parseInt(req.body.intrest);
+  const time=parseInt(req.body.time);
+  let totalintrest=(principle*intrest*time)/100;
+  let totalvalue=principle+totalintrest;
+res.json({
+  "total":totalvalue,
+  "intrest":totalintrest
+})
+})
 app.get("/hi",(req,res)=>{
   res.send("hi")
 })
