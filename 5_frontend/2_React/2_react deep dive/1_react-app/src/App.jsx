@@ -29,8 +29,18 @@ function App() {
       {todos.map((todo) => {
         return <Todo title={todo.title} desc={todo.desc} />;
       })}
+      <DarkNewTodo todos={todos} />
     </>
   );
+}
+
+function DarkNewTodo(props){
+  return <div>
+
+  {props.todos.map((todo) => {
+    return <div style={{backgroundColor:"red", color:"black"}}> <Todo title={todo.title} desc={todo.desc} /> </div>;
+  })}
+  </div>
 }
 
 function Todo(props) {
