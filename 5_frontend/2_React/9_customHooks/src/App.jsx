@@ -1,47 +1,29 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-// custom hooks
-
-function useTodos() {
-  const [todos, setTodos] = useState([]);
-  const [loading, setLoading] = useState(true);
-
+import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+import MouseEvent from "./MouseEvent";
+function useIsonline() {
+  const [isonline, setIsonline] = useState(window.navigator.onLine);
   useEffect(() => {
-    const value=setInterval(() => {
-      axios.get("https://sum-server.100xdevs.com/todos").then((res) => {
-        setTodos(res.data.todos);
-        setLoading(false);
-      });
-    }, n * 1000);
-
-    axios.get("https://sum-server.100xdevs.com/todos").then((res) => {
-      setTodos(res.data.todos);
-      setLoading(false);
+    window.addEventListener("online", () => {
+      setIsonline(true);
     });
-    return ()=>{
-      clearInterval(value)
-    }
-  }, [n]);
-  return { todos, loading };
+    window.addEventListener("offline", () => {
+      setIsonline(true);
+    });
+  });
+  return isonline;
 }
+
 const App = () => {
-  const { todos, loading } = useTodos([5]);
+  //   const isOnline=useIsonline();
+  //  if(isOnline){
+  //   return "you are online yay!"
+  //  }
+  //  return "you are offline ,please connect to the internet"
   return (
-    <div>
-      {loading
-        ? "loading..."
-        : todos.map((todo) => <Track key={todo.id} todo={todo} />)}
-    </div>
-  );
+    <MouseEvent/>
+  )
 };
-function Track({ todo }) {
-  return (
-    <div>
-      <p>{todo.id}</p>
-      <p>{todo.title}</p>
-      <p>{todo.description}</p>
-    </div>
-  );
-}
 
 export default App;
