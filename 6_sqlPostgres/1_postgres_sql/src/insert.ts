@@ -1,6 +1,6 @@
 import { Client } from "pg";
 
-async function insertUserIntoTable() {
+async function insertUserIntoTable(username:string,email:string,password:string) {
   const client = new Client({
     connectionString: "postgresql://practice_owner:HN5Z3aOhJpcU@ep-still-wildflower-a5ggcrcb.us-east-2.aws.neon.tech/practice?sslmode=require",
   });
@@ -8,12 +8,14 @@ async function insertUserIntoTable() {
   try {
     await client.connect();
 
+    
+
     const insertUserQuery = `
       INSERT INTO users1 (username, email, password)
-      VALUES ('madara', 'madara@123', 'mongikyo')
+      VALUES ($1, $2, $3)
     `;
-
-    const result = await client.query(insertUserQuery);
+const VALUES=[username, email, password]
+    const result = await client.query(insertUserQuery, VALUES);
     console.log("Insertion success", result);
   } catch (err) {
     console.error("Error during insertion:", err);
@@ -22,4 +24,4 @@ async function insertUserIntoTable() {
   }
 }
 
-insertUserIntoTable();
+insertUserIntoTable('itachi','itachi@123','mongikyo');

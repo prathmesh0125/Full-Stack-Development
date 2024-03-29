@@ -10,27 +10,34 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const pg_1 = require("pg");
-function insertUserIntoTable(username, email, password) {
+// Async function to fetch user data from the database given an email
+function getUser(email) {
     return __awaiter(this, void 0, void 0, function* () {
         const client = new pg_1.Client({
             connectionString: "postgresql://practice_owner:HN5Z3aOhJpcU@ep-still-wildflower-a5ggcrcb.us-east-2.aws.neon.tech/practice?sslmode=require",
         });
         try {
-            yield client.connect();
-            const insertUserQuery = `
-      INSERT INTO users1 (username, email, password)
-      VALUES ($1, $2, $3)
-    `;
-            const VALUES = [username, email, password];
-            const result = yield client.query(insertUserQuery, VALUES);
-            console.log("Insertion success", result);
+            yield client.connect(); // Ensure client connection is established
+            const query = 'SELECT * FROM users1 WHERE email = $1';
+            const values = [email];
+            const result = yield client.query(query, values);
+            if (result.rows.length > 0) {
+                console.log('User found:', result.rows[0]); // Output user data
+                return result.rows[0]; // Return the user data
+            }
+            else {
+                console.log('No user found with the given email.');
+                return null; // Return null if no user was found
+            }
         }
         catch (err) {
-            console.error("Error during insertion:", err);
+            console.error('Error during fetching user:', err);
+            throw err; // Rethrow or handle error appropriately
         }
         finally {
-            yield client.end();
+            yield client.end(); // Close the client connection
         }
     });
 }
-insertUserIntoTable('itachi', 'itachi@123', 'mongikyo');
+// Example usage
+getUser('itachi@123').catch(console.error);
