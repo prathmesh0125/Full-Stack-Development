@@ -5,7 +5,7 @@ export default function page() {
               <div>
                   <div className="px-10">
                       <div className="text-3xl font-extrabold">
-                          Sign in
+                          Sign up
                       </div>
                   </div>
                   <div className="pt-2">
