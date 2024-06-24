@@ -1,5 +1,6 @@
-export default function product(){
+export default function product({searchParams}:any){
+  console.log(searchParams.search)
   return <div>
-    hello
+    products page
   </div>
 }

@@ -1,10 +1,10 @@
 // app/[id]/page.tsx
-'use client'
-import { useParams } from 'next/navigation';
 
-export default function Details() {
-  // const params = useParams();
-  // const { id } = params; // 'id' corresponds to the dynamic segment in the URL
+
+export default function Details({params}:any) {
+
+  console.log(params)
+
 
   return (
     <div>
