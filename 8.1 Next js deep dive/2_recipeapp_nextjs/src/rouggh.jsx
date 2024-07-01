@@ -55,9 +55,17 @@ function RenderTabPane({ type, props, setActiveKey }) {
         lg={{ span: 16 }}
         xl={{ span: 16 }}
         xxl={{ span: 16 }}
+        className="festival-info-container h-[550px] overflow-y-auto" style={{ 
+          scrollbarWidth: 'none', /* Firefox */
+          msOverflowStyle: 'none', /* Internet Explorer */
+          '&::webkitScrollbar': {
+              display: 'none' /* WebKit (Chrome, Safari, etc.) */
+          }
+      }}
+      
       >
         <When condition={type === TAB_KEYS.FESTIVAL}>
-          <FestivalInfo {...props} setActiveKey={setActiveKey} activeKey={TAB_KEYS.FESTIVAL} />
+          <FestivalInfo {...props} setActiveKey={setActiveKey } activeKey={TAB_KEYS.FESTIVAL} />
         </When>
         <When condition={type === TAB_KEYS.PHOTOS}>
           <FestivalInfo {...props} setActiveKey={setActiveKey} activeKey={TAB_KEYS.PHOTOS} />
@@ -71,11 +79,12 @@ function RenderTabPane({ type, props, setActiveKey }) {
       </Column>
     </Row>
   );
-} 
+}
+
+
 
 function FestivalAction(props) {
-  const { name, id, isOwner, entriesActive } = props;
-  const [showModal, setShowModal] = useState(false);
+  const { isOwner, entriesActive, setShowModal } = props;
   const { isLarge, isExtraLarge, isDoubleLarge } = useBreakpoint();
   const router = useRouter();
   const isLargeScreen = isLarge || isExtraLarge || isDoubleLarge;
@@ -85,8 +94,14 @@ function FestivalAction(props) {
   }
 
   function handleMessageClick() {
-    router.push(MESSAGE_URL);
+    if (!loggedIn) {
+      setShowModal(true);
+    } else {
+      router.push(MESSAGE_URL);
+    }
   }
+
+  const loggedIn = true;
 
   return (
     <Flex
@@ -111,14 +126,6 @@ function FestivalAction(props) {
           onClick={() => setShowModal(true)}
         />
       </When>
-      <When condition={!isOwner || entriesActive}>
-        <ProjectSelectionModal
-          showModal={showModal}
-          title={name}
-          festivalId={id}
-          onClose={() => setShowModal(false)}
-        />
-      </When>
       <When condition={isOwner}>
         <Button
           text={"Edit Festival"}
@@ -132,6 +139,7 @@ function FestivalAction(props) {
 }
 
 function ViewFestival(props) {
+  const [showModal, setShowModal] = useState(false);
   const { TAB_KEYS } = VIEW_FESTIVAL_CONFIG;
   const { isLarge, isExtraLarge, isDoubleLarge } = useBreakpoint();
   const [activeKey, setActiveKey] = useState(TAB_KEYS.FESTIVAL);
@@ -191,7 +199,7 @@ function ViewFestival(props) {
         style={{ background: colorBgLayout }}
         className={constructClassName([isLargeScreen ? "" : "w-full px-1"])}
       />
-      <FestivalAction {...props} />
+      <FestivalAction {...props} setShowModal={setShowModal} />
     </Flex>
   );
 
@@ -199,7 +207,7 @@ function ViewFestival(props) {
     <div className="view-festival-page">
       {/* Navigation Bar */}
       <When condition={props.name}>
-        <TopNavbar festivalData={props} />
+        <TopNavbar festivalData={props} setShowModal={setShowModal} />
       </When>
       <Avatar
         src={getImageURLWithS3Link(props?.coverUrl)}
@@ -259,8 +267,153 @@ function ViewFestival(props) {
           activeKey={activeKey}
         />
       </Flex>
+      <When condition={!props?.isOwner || props?.entriesActive}>
+        <ProjectSelectionModal
+          showModal={showModal}
+          title={props?.name}
+          festivalId={props?.id}
+          onClose={() => setShowModal(false)}
+        />
+      </When>
     </div>
   );
 }
 
 export default ViewFestival;
+
+import React, { useRef, useEffect } from "react";
+import {
+  CARD_TITLE_COMMON_CONFIG,
+  FESTIVAL_INFO_TAB_CONFIG,
+  VIEW_FESTIVAL_CONFIG,
+} from "@/constants";
+import { Avatar, Card, Flex, Typography } from "../common";
+import { getImageURLWithS3Link } from "@/helper";
+import Photos from "./Photos";
+import ContactAndVenue from "./ContactAndVenue";
+import Review from "./Review";
+
+function getEllipsisConfig() {
+  return {
+    rows: 5,
+    expandable: "collapsible",
+    symbol: (expanded) => (
+      <Button {...SHOW_HIDE_BUTTON_ELLIPSIS({ expanded })} />
+    ),
+  };
+}
+
+function Organizers({ organizers }) {
+  const { ORGANIZER, ORGANIZER_NAME, ORGANIZER_DESIGNATION } =
+    FESTIVAL_INFO_TAB_CONFIG;
+  return (
+    <Card title={<Typography {...ORGANIZER} />}>
+      <Flex gap={24}>
+        {organizers &&
+          organizers.map(({ designation, name }) => (
+            <Flex vertical key={`${name}-${designation}`}>
+              <Typography text={name} {...ORGANIZER_NAME} />
+              <Typography text={designation} {...ORGANIZER_DESIGNATION} />
+            </Flex>
+          ))}
+      </Flex>
+    </Card>
+  );
+}
+
+function About({ description, photos, setActiveKey }) {
+  const { COMMON_FESTIVAL_INFO } = FESTIVAL_INFO_TAB_CONFIG;
+  const { TAB_KEYS } = VIEW_FESTIVAL_CONFIG;
+
+  return (
+    <Card
+      loading={!description}
+      title={<Typography text={"About"} {...CARD_TITLE_COMMON_CONFIG} />}
+    >
+      <Flex
+        className={"mb-4 cursor-pointer"}
+        gap={8}
+        wrap={"wrap"}
+        onClick={() => setActiveKey(TAB_KEYS.PHOTOS)}
+      >
+        {photos?.map(({ url, title }) => (
+          <Avatar
+            src={getImageURLWithS3Link(url)}
+            size={150}
+            alt={title}
+            shape={"square"}
+            className="app-border-radius"
+            key={`${url}_${title}`}
+          />
+        ))}
+      </Flex>
+      <Typography
+        text={description}
+        {...COMMON_FESTIVAL_INFO}
+        ellipsis={{ ...getEllipsisConfig() }}
+      />
+    </Card>
+  );
+}
+
+function FestivalInfo(props) {
+  const { FESTIVAL_INFO_MAPPING, COMMON_FESTIVAL_INFO } =
+    FESTIVAL_INFO_TAB_CONFIG;
+  const { TAB_KEYS } = VIEW_FESTIVAL_CONFIG;
+  const aboutRef = useRef(null);
+  const photosRef = useRef(null);
+  const contactAndVenueRef = useRef(null);
+  const reviewRef = useRef(null);
+
+  // Helper function to scroll to a section and ensure it appears at the top of the viewport
+  const scrollToRef = (ref) => {
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  useEffect(() => {
+    if (props.activeKey === TAB_KEYS.FESTIVAL) {
+      scrollToRef(aboutRef);
+    } else if (props.activeKey === TAB_KEYS.PHOTOS) {
+      scrollToRef(photosRef);
+    } else if (props.activeKey === TAB_KEYS.CONTACT_AND_VENUE) {
+      scrollToRef(contactAndVenueRef);
+    } else if (props.activeKey === TAB_KEYS.REVIEW) {
+      scrollToRef(reviewRef);
+    }
+  }, [props.activeKey, TAB_KEYS]);
+
+  return (
+    <Flex vertical gap={24}>
+      <div ref={aboutRef}>
+        <About {...props} />
+      </div>
+      {FESTIVAL_INFO_MAPPING.map(({ text, dbMapping }, idx) => (
+        <Card
+          loading={!props[dbMapping]}
+          title={<Typography text={text} {...CARD_TITLE_COMMON_CONFIG} />}
+          key={`${text}-${idx}`}
+        >
+          <Typography
+            text={props[dbMapping]}
+            {...COMMON_FESTIVAL_INFO}
+            ellipsis={{ ...getEllipsisConfig() }}
+          />
+        </Card>
+      ))}
+      <div ref={photosRef}>
+        <Photos {...props} />
+      </div>
+      <div ref={contactAndVenueRef}>
+        <ContactAndVenue {...props} />
+      </div>
+      <div ref={reviewRef}>
+        <Review {...props} />
+      </div>
+      <Organizers organizers={props.organizers} />
+    </Flex>
+  );
+}
+
+export default FestivalInfo;
